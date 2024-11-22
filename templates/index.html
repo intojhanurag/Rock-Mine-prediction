@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock or Mine Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f2f3f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 700px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2C3E50;
+        }
+
+        .step-indicator {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .step-indicator span {
+            background-color: #3498db;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 15px;
+            margin: 0 5px;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #3498db;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .result p {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+        }
+
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Rock or Mine Prediction</h1>
+    <div class="step-indicator">
+        <span>Step 1</span> <span>Step 2</span> <span>Step 3</span>
+    </div>
+
+    <form action="/predict" method="POST">
+        <div class="form-group">
+            <label for="data1">Feature 1: </label>
+            <input type="number" name="data1" step="any" required>
+        </div>
+
+        <div class="form-group">
+            <label for="data2">Feature 2: </label>
+            <input type="number" name="data2" step="any" required>
+        </div>
+
+        <!-- Continue adding the 59 feature inputs dynamically or as needed -->
+
+        <button type="submit">Submit & Predict</button>
+    </form>
+
+    <div class="result">
+        {% if prediction %}
+            <p>Prediction: <strong>{{ prediction }}</strong></p>
+            <div>
+                <img src="https://example.com/{{ prediction.lower() }}.png" alt="Prediction Result">
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="footer">
+        <p>Need help? <a href="#">Contact Support</a></p>
+    </div>
+</div>
+
+</body>
+</html>
